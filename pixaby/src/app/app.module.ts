@@ -1,3 +1,4 @@
+import { ImageService } from './shared/image.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -12,7 +13,7 @@ import { ImageListComponent } from './image-search/image-list/image-list.compone
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [ImageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
