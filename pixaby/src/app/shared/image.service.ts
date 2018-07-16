@@ -1,7 +1,8 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-// import { map } from 'rxjs/add/operator/map';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from '../../../node_modules/rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ImageService {
@@ -11,9 +12,9 @@ export class ImageService {
     private URL: string = this.API_URL + this.API_KEY + '&q=';
     private perPage: string = "&per_page=10";
 
-    constructor(private _http: Http) { }
+    constructor(private _http: HttpClient) { }
 
-    getImage(query) {
-        return this._http.get(this.URL + query);
+    getImage(query): Observable<any[]> {
+        return this._http.get<any[]>(this.URL + query);
     }
 }
